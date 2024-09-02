@@ -331,6 +331,7 @@ MonoBehaviour:
   maxHealth: 30
   health: 30
   goldValue: 0
+  scoreValue: 6
   weaponDropChance: 0.05
   index: 8
   healthBar: {fileID: 3720224518635733389}

@@ -21,6 +21,7 @@ public class Monster : MonoBehaviour
     public float maxHealth;
     public float health;
     [SerializeField] private int goldValue;    // how much gold player gets when kill this monster
+    [SerializeField] private int scoreValue;    // how much score player gets when kill this monster
     private float freezeIndex = 1;    // 1 = regular freeze time. <1 = receive less freeze time. >1 = receive longer freeze time
     public float weaponDropChance = 0.05f;    // chance to drop weapon when killed. 1 = 100%
 
@@ -58,7 +59,7 @@ public class Monster : MonoBehaviour
         this.attackWait = 3.0f;
         this.maxHealth = 30;
         this.health = 30;
-        this.goldValue = 2;
+        this.goldValue = 15;
         this.freezeIndex = 1;
         this.weaponDropChance = 0.05f;
     }
@@ -133,6 +134,8 @@ public class Monster : MonoBehaviour
         if (randomInt < pollusionManager.pollusion)    // monster is mutation
         {
             int mutationType = Random.Range(0, 4);    // Random.Range(a, b): include a, doesn't include b
+            goldValue = (int) (goldValue * 1.5);    // mutated monster gives more gold
+            scoreValue = (int)(scoreValue * 1.2);    // mutated monster gives more score
             switch(mutationType)
             {
                 case 0:
@@ -252,6 +255,7 @@ public class Monster : MonoBehaviour
         }
 
         goldManager.GetComponent<GoldManager>().gold += goldValue;
+        ScoringSystem.score += scoreValue;
         Destroy(transform.parent.gameObject);    // remove the empty parent monster gameobject, so the monster body and health bar will also be removed
     }
 

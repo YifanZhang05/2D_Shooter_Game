@@ -14,13 +14,29 @@ public class SkillSlot : MonoBehaviour
     public Skill skill;
     [SerializeField] private Image selectedIndicator;
     private SkillsManager skillsManager;
-    private TextMeshProUGUI countDownText;
+    [SerializeField] private TextMeshProUGUI countDownText;
+    [SerializeField] private TextMeshProUGUI keyText;
 
     // Start is called before the first frame update
     void Start()
     {
         skillsManager = GameObject.FindGameObjectWithTag("Skills Manager").GetComponent<SkillsManager>();
-        countDownText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        if (key == KeyCode.Alpha1)
+        {
+            keyText.text = "1";
+        }
+        else if (key == KeyCode.Alpha2)
+        {
+            keyText.text = "2";
+        }
+        else if (key == KeyCode.Alpha3)
+        {
+            keyText.text = "3";
+        }
+        else
+        {
+            keyText.text = key.ToString();
+        }
     }
 
     // Update is called once per frame

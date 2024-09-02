@@ -8,7 +8,7 @@ public class Tree : Structure
     private float health = 50;
     private float maxHealth = 50;
     private float freezeMonsterTime = 1f;    // how much time monster will be frozen when they hit a tree
-    private int treeGoldValue = 10;    // how many gold does it give to player when they break a tree
+    private int treeGoldValue = 50;    // how many gold does it give to player when they break a tree
     private float reducePollusionSec = 2.5f;    // decrease how much pollusion every sec per tree
     private float fruitChance = 0.25f;    // chance to drop a fruit when tree is destroyed
     private GameObject goldManager;
