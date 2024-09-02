@@ -12,7 +12,6 @@ public class ButtonUI : MonoBehaviour
 
     public void exitGame()
     {
-        Debug.Log("Exit Game");
         Application.Quit();
     }
 

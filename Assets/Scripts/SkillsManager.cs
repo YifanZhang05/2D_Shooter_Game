@@ -21,7 +21,7 @@ public class SkillsManager : MonoBehaviour
         // create skill slots (instead of having them ready before starting the game)
         for (int i = 0; i < maxSkillEquipNum; ++i)
         {
-            skillSlots[i] = Instantiate(skillSlot, new Vector2(-85+85*i+canvas.transform.position.x, 0), Quaternion.identity, canvas.transform);
+            skillSlots[i] = Instantiate(skillSlot, new Vector2(-180+180*i+canvas.transform.position.x, 0), Quaternion.identity, canvas.transform);
             SkillSlot sS = skillSlots[i].GetComponentInChildren<SkillSlot>();
             sS.key = keys[i];
         }
