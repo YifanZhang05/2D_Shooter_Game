@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float maxHealth;
     public float speed;
     public float luck;    // chance to drop items from trees and monsters * (1+luck/100)
+    public Inventory inventory;
     public GameObject currentWeapon;
     public GameObject healthBar;
     private float moveHoriz;

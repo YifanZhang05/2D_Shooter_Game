@@ -39,7 +39,6 @@ public class Rage : Skill
     public override void useSkill()
     {
         base.useSkill();
-        Debug.Log("Rage");
         rage = true;
         timer = 0;
 

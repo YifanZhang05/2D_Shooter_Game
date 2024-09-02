@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4377504696350933805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.591509, y: 11.0073185, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -122,9 +122,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4377504696350933805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4a64d67d6710e4496317b708ea3dce, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e61c949c3e004ee19a36341630e36f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  structObj: {fileID: 4377504696350933805}
+  icon: {fileID: 21300000, guid: 704bfe7514f3545b6a29ea500539010a, type: 3}
   fruit: {fileID: 3361401275252069410, guid: 26e98c7ee721f1e48983df7e96949e44, type: 3}
 --- !u!1 &4377504696385425867
 GameObject:

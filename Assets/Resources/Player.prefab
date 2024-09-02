@@ -81,6 +81,8 @@ Transform:
   m_Children:
   - {fileID: 2136012152}
   - {fileID: 6727867220651885627}
+  - {fileID: 8022338698702866516}
+  - {fileID: 1006234508020784808}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -145,7 +147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3477752140556536593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8764e23a114e9c42ba6578fa2c573cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f300d2b6629049ccb939beb312545ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 0
@@ -153,6 +155,7 @@ MonoBehaviour:
   maxHealth: 0
   speed: 0
   luck: 0
+  inventory: {fileID: 7436439596213205286}
   currentWeapon: {fileID: 0}
   healthBar: {fileID: 0}
 --- !u!50 &3477752140556536594
@@ -247,7 +250,110 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills: []
-  equipedSkills:
+  skillSlots:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  keys: 000000000000000000000000
+  skillSlot: {fileID: 3862734866786695348, guid: 695bef479383f41478b9663f616dd8e5, type: 3}
+  canvas: {fileID: 0}
+--- !u!1 &7257724236403002096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8022338698702866516}
+  - component: {fileID: 7436439596213205286}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8022338698702866516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7257724236403002096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3477752140556536595}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7436439596213205286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7257724236403002096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d595a76b40be44509624f61df76340f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3477752140556536597}
+--- !u!1 &8647036676860718298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1006234508020784808}
+  - component: {fileID: 5652291165026751944}
+  m_Layer: 0
+  m_Name: Structure Placer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1006234508020784808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8647036676860718298}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 516.916, y: 359.06943, z: -8.374186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3477752140556536595}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5652291165026751944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8647036676860718298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78047f66a82e84862a3758dc495c291a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: 
+  icon: {fileID: 0}
+  description: 
+  equiped: 0
+  selected: 0
+  pollusion: 0
+  coolDown: 0
+  countDown: 0
+  effectRange: {fileID: 0}
+  structure: {fileID: 0}
+  inv: {fileID: 7436439596213205286}

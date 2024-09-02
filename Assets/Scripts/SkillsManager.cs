@@ -8,7 +8,24 @@ public class SkillsManager : MonoBehaviour
     [HideInInspector] public static bool hasSelectedSkill = false;    // this controls that only 1 skill is selected at a time
 
     public List<Skill> skills;
-    public Skill[] equipedSkills = new Skill[maxSkillEquipNum];
+
+    // list of skill slots
+    [SerializeField] private GameObject[] skillSlots = new GameObject[maxSkillEquipNum];
+    [SerializeField] private KeyCode[] keys = new KeyCode[maxSkillEquipNum];
+    // skill slot prefab
+    [SerializeField] private GameObject skillSlot;
+    [SerializeField] private GameObject canvas;
+
+    private void Start()
+    {
+        // create skill slots (instead of having them ready before starting the game)
+        for (int i = 0; i < maxSkillEquipNum; ++i)
+        {
+            skillSlots[i] = Instantiate(skillSlot, new Vector2(-85+85*i+canvas.transform.position.x, 0), Quaternion.identity, canvas.transform);
+            SkillSlot sS = skillSlots[i].GetComponentInChildren<SkillSlot>();
+            sS.key = keys[i];
+        }
+    }
 
     // Player gets a new skill
     public void getNewSkill(Skill skill)
@@ -18,7 +35,7 @@ public class SkillsManager : MonoBehaviour
         // If equiped skill is not full, then equip the new skill
         if (skills.Count <= maxSkillEquipNum)
         {
-            equipedSkills[skills.Count - 1] = skillObject;
+            skillSlots[skills.Count - 1].GetComponentInChildren<SkillSlot>().skill = skillObject;
             skillObject.equiped = true;
         }
     }
@@ -28,11 +45,11 @@ public class SkillsManager : MonoBehaviour
     {
         for (int i = 0; i < maxSkillEquipNum; i++)
         {
-            if (equipedSkills[i] == oldSkill)
+            if (skillSlots[i].GetComponentInChildren<SkillSlot>().skill == oldSkill)
             {
                 oldSkill.equiped = false;
                 newSkill.equiped = true;
-                equipedSkills[i] = newSkill;
+                skillSlots[i].GetComponentInChildren<SkillSlot>().skill = newSkill;
                 return;
             }
         }
@@ -43,10 +60,10 @@ public class SkillsManager : MonoBehaviour
     {
         for (int i = 0; i < maxSkillEquipNum; i++)
         {
-            if (equipedSkills[i] == skill)
+            if (skillSlots[i].GetComponentInChildren<SkillSlot>().skill == skill)
             {
                 skill.equiped = false;
-                equipedSkills[i] = null;
+                skillSlots[i].GetComponentInChildren<SkillSlot>().skill = null;
                 return;
             }
         }
@@ -57,27 +74,27 @@ public class SkillsManager : MonoBehaviour
     {
         for (int i = 0; i < maxSkillEquipNum; i++)
         {
-            if (equipedSkills[i] == null)
+            if (skillSlots[i].GetComponentInChildren<SkillSlot>().skill == null)
             {
                 skill.equiped = true;
-                equipedSkills[i] = skill;
+                skillSlots[i].GetComponentInChildren<SkillSlot>().skill = skill;
                 return;
             }
         }
     }
 
-    public void useEquipedSkill(int index)
+    public void useEquipedSkill(Skill s)
     {
-        if (equipedSkills[index].countDown <= 0 && Time.timeScale > 0)     // can only use skill if countDown is finished and game not paused
+        if (s.countDown <= 0 && Time.timeScale > 0)     // can only use skill if countDown is finished and game not paused
         {
-            if (!hasSelectedSkill && equipedSkills[index].selected == false)
+            if (!hasSelectedSkill && s.selected == false)
             {
-                equipedSkills[index].selected = true;
+                s.selected = true;
                 hasSelectedSkill = true;
             }
-            else if (equipedSkills[index].selected == true)
+            else if (s.selected == true)
             {
-                equipedSkills[index].selected = false;
+                s.selected = false;
                 hasSelectedSkill = false;
             }
             //equipedSkills[index].useSkill();

@@ -14,9 +14,9 @@ public class WeaponManager : MonoBehaviour
         getNewWeapon(initWeapon, true);
 
         // test
-        getNewWeapon(initWeapon, true);
-        weapons[0].weaponDamage = 10000;
-        getWeaponObject(weapons[0]).GetComponent<SpriteRenderer>().color = Color.black;
+        //getNewWeapon(initWeapon, true);
+        //weapons[0].weaponDamage = 10000;
+        //getWeaponObject(weapons[0]).GetComponent<SpriteRenderer>().color = Color.black;
 
     }
 

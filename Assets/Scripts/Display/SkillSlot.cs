@@ -10,8 +10,8 @@ using TMPro;
 public class SkillSlot : MonoBehaviour
 {
 
-    [SerializeField] private KeyCode key;    // key to press when you want to use the skill in this skill slot
-    [SerializeField] private int index;    // index in equipedSkills that this slot is responsible for
+    public KeyCode key;    // key to press when you want to use the skill in this skill slot
+    public Skill skill;
     [SerializeField] private Image selectedIndicator;
     private SkillsManager skillsManager;
     private TextMeshProUGUI countDownText;
@@ -27,13 +27,13 @@ public class SkillSlot : MonoBehaviour
     void Update()
     {
         // display skill icon
-        if (skillsManager.equipedSkills[index] != null)    // if skill slot not empty
+        if (skill != null)    // if skill slot not empty
         {
-            gameObject.GetComponent<Image>().sprite = skillsManager.equipedSkills[index].icon;
-            if (skillsManager.equipedSkills[index].countDown > 0)    // if skill in cooldown
+            gameObject.GetComponent<Image>().sprite = skill.icon;
+            if (skill.countDown > 0)    // if skill in cooldown
             {
                 gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.25f);
-                countDownText.text = ((int)skillsManager.equipedSkills[index].countDown+1).ToString();
+                countDownText.text = ((int)skill.countDown+1).ToString();
             }
             else
             {
@@ -42,7 +42,7 @@ public class SkillSlot : MonoBehaviour
             }
 
             // if the skill is selected, make the outer border black
-            if (skillsManager.equipedSkills[index].selected)
+            if (skill.selected)
             {
                 selectedIndicator.color = Color.black;
             }
@@ -59,9 +59,9 @@ public class SkillSlot : MonoBehaviour
         }
         
         // use the skill when press corresponding button
-        if (Input.GetKeyDown(key) && skillsManager.equipedSkills[index] != null)
+        if (Input.GetKeyDown(key) && skill != null)
         {
-            skillsManager.useEquipedSkill(index);
+            skillsManager.useEquipedSkill(skill);
         }
     }
 }

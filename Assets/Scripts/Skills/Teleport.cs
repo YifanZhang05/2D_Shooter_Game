@@ -36,7 +36,6 @@ public class Teleport : Skill
         selected = false;
         SkillsManager.hasSelectedSkill = false;
 
-        Debug.Log("Teleport");
 
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(Game.mousePos, radius);
         foreach (Collider2D collider in hitColliders) // check everything at the landing location

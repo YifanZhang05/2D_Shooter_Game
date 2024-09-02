@@ -33,7 +33,6 @@ public class Freeze : Skill
     public override void useSkill()
     {
         base.useSkill();
-        Debug.Log("Freeze");
 
         // find all colliders in the fireball radius
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(Game.mousePos, radius);
