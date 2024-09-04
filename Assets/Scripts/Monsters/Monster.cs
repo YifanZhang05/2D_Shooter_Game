@@ -22,10 +22,10 @@ public class Monster : MonoBehaviour
     public float health;
     [SerializeField] private int goldValue;    // how much gold player gets when kill this monster
     [SerializeField] private int scoreValue;    // how much score player gets when kill this monster
-    private float freezeIndex = 1;    // 1 = regular freeze time. <1 = receive less freeze time. >1 = receive longer freeze time
+    [SerializeField] private float freezeIndex = 1;    // 1 = regular freeze time. <1 = receive less freeze time. >1 = receive longer freeze time
     public float weaponDropChance = 0.05f;    // chance to drop weapon when killed. 1 = 100%
 
-    public int index;    // higher index = more likely to spawn this type of monster
+    [SerializeField] private int index;    // higher index = more likely to spawn this type of monster
 
     public GameObject healthBar;
     public SpriteRenderer border;    // outside part of the monster
@@ -34,7 +34,7 @@ public class Monster : MonoBehaviour
     private RageManager rageManager;
 
     
-    private PollusionManager pollusionManager;
+    protected PollusionManager pollusionManager;
 
     // set stats of monster
     protected void setStats(float speed, float damage, float knockBackIndex, float attackWait, float maxHealth, int goldValue, float freezeIndex, float weaponDropChance)
@@ -62,6 +62,12 @@ public class Monster : MonoBehaviour
         this.goldValue = 15;
         this.freezeIndex = 1;
         this.weaponDropChance = 0.05f;
+    }
+
+    // get the index for the monster
+    public virtual int getIndex()
+    {
+        return index;
     }
 
     private void Awake()
@@ -233,13 +239,14 @@ public class Monster : MonoBehaviour
     // freeze monster (make it unable to move) for a given time
     public void freezeMonster(float freezeTime)
     {
-        freezeTimer = freezeTime *= freezeIndex;
+        freezeTimer = Mathf.Max(freezeTimer, freezeTime * freezeIndex);
     }
 
     // freeze monster with effect
     public void freezeMonster(float freezeTime, GameObject effect)
     {
-        freezeTimer = freezeTime *= freezeIndex;
+        freezeTimer = Mathf.Max(freezeTimer, freezeTime * freezeIndex);
+        Destroy(freezeEffect);    // destroy new freezeEffect
         freezeEffect = Instantiate(effect, transform);
     }
 

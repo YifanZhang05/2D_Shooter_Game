@@ -332,6 +332,7 @@ MonoBehaviour:
   health: 30
   goldValue: 0
   scoreValue: 6
+  freezeIndex: 1
   weaponDropChance: 0.05
   index: 8
   healthBar: {fileID: 3720224518635733389}
@@ -352,6 +353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDropInfo:
   - weaponDropItem: {fileID: 8295360950301087759, guid: 977963d7c2172d04f9a4c1b1d9257d39, type: 3}
+    index: 10
+  - weaponDropItem: {fileID: 4145410849840671950, guid: 18bf90591f64249fe8e7500ddfaeb4e9, type: 3}
     index: 10
 --- !u!1 &7762854503980237072
 GameObject:

@@ -140,5 +140,5 @@ MonoBehaviour:
   effectRange: {fileID: 227458920134285568}
   radius: 2.5
   knockBack: 2000
-  damage: 20
+  damageMult: 10
   explosion: {fileID: 4513365146778362832, guid: f41aa6577d72d5242b3b2fe3207b4c30, type: 3}

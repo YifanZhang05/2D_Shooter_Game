@@ -8,7 +8,6 @@ public class Tree : Structure
     private float health = 50;
     private float maxHealth = 50;
     private float freezeMonsterTime = 1f;    // how much time monster will be frozen when they hit a tree
-    private int treeGoldValue = 50;    // how many gold does it give to player when they break a tree
     private float reducePollusionSec = 2.5f;    // decrease how much pollusion every sec per tree
     private float fruitChance = 0.25f;    // chance to drop a fruit when tree is destroyed
     private GameObject goldManager;
@@ -18,6 +17,11 @@ public class Tree : Structure
     [SerializeField] private GameObject fruit;
 
     private float timer;
+
+    private void Awake()
+    {
+        goldValue = 50;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +74,7 @@ public class Tree : Structure
             // If health <= 0 after that, player gets gold
             if (health <= 0)
             {
-                goldManager.GetComponent<GoldManager>().gold += treeGoldValue;
+                goldManager.GetComponent<GoldManager>().gold += goldValue;
                 //Debug.Log(goldManager.GetComponent<GoldManager>().gold);
             }
         }
@@ -106,7 +110,7 @@ public class Tree : Structure
             // If health <= 0 after that, player gets gold
             if (health <= 0)
             {
-                goldManager.GetComponent<GoldManager>().gold += treeGoldValue;
+                goldManager.GetComponent<GoldManager>().gold += goldValue;
                 //Debug.Log(goldManager.GetComponent<GoldManager>().gold);
             }
         }
@@ -117,7 +121,7 @@ public class Tree : Structure
         health -= damage;
         if (health <= 0 && fromPlayer)
         {
-            goldManager.GetComponent<GoldManager>().gold += treeGoldValue;
+            goldManager.GetComponent<GoldManager>().gold += goldValue;
         }
     }
 

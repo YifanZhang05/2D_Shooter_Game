@@ -37,7 +37,8 @@ public class StructurePlacer : Skill
         base.useSkill();
         if (structure != null)
         {
-            Instantiate(structure, Game.mousePos, Quaternion.identity);
+            GameObject s = Instantiate(structure, Game.mousePos, Quaternion.identity);
+            s.GetComponent<Structure>().goldValue = 0;    // structure placed by player doesn't give gold
             inv.removeObject(structure.GetComponent<Structure>(), 1);
             if (!inv.structs.ContainsKey(structure.GetComponent<Structure>()))
             {

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Freeze
   icon: {fileID: 21300000, guid: 9c43091ae33ae2e44871ec559f459489, type: 3}
-  description: Freeze monsters
+  description: Freeze an area
   equiped: 0
   selected: 0
   pollusion: 200

@@ -1864,7 +1864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5345921540693924975, guid: af0d3f8562b0d43539c5057a2a9041a5, type: 3}
       propertyPath: cost
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5345921540693924975, guid: af0d3f8562b0d43539c5057a2a9041a5, type: 3}
       propertyPath: icon
@@ -1880,7 +1880,7 @@ PrefabInstance:
       objectReference: {fileID: 4377504696350933805, guid: 7f95a4962af851e4db4ea3b601dfc531, type: 3}
     - target: {fileID: 5345921540693924975, guid: af0d3f8562b0d43539c5057a2a9041a5, type: 3}
       propertyPath: description
-      value: Buy 1 Tree
+      value: Buy 1 Tree (gives no gold)
       objectReference: {fileID: 0}
     - target: {fileID: 7653299291918680439, guid: af0d3f8562b0d43539c5057a2a9041a5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3209,7 +3209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e616fda8064ff4bd2830ced0d09ceba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   scoreUI: {fileID: 737873132}
 --- !u!1 &1032424797
 GameObject:
@@ -4765,6 +4764,8 @@ MonoBehaviour:
   monstersList:
   - {fileID: 7762854503980237072, guid: 01b8eae80e427b74fb9f63e772ab8f6d, type: 3}
   - {fileID: 8062559576564656954, guid: 792b2755eda64594585c59280f1e4449, type: 3}
+  - {fileID: 710015554150991076, guid: 6d9facedb95e947c8b566f2d57e3ff1b, type: 3}
+  - {fileID: 9058516471619527479, guid: 399992733d565401082fe22ecbce77ca, type: 3}
 --- !u!114 &1310003551 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7436439596213205286, guid: 81b57555cd5c3a747b951d73714b85c3, type: 3}
@@ -5254,7 +5255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1470591568
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8552,7 +8553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2063974511
 RectTransform:
   m_ObjectHideFlags: 0

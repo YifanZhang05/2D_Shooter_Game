@@ -10,20 +10,21 @@ public class MonsterSpawner : MonoBehaviour
     private int indexSum = 0;    // to generate a monster, first generate a number from 1 to sum of all monster indexes. Use this and index to determine what monster to generate
 
     // monsters come in waves: e.g. every 5 sec, 5 monsters appears together
-    private int waveMonsterNum;    // how many monsters in a wave
+    private int baseWaveMonsterNum;    // how many monsters in a wave initially
+    private int waveMonsterNum;
     private float timeBetweenWave;    // time between two waves in sec.
     private float timer = 0f;    // wave timer
+
+    private float pollusionPerAdditionalMonster = 100f;    // amount of pollusion required for each 1 additional monster per wave
 
     // Start is called before the first frame update
     void Start()
     {
         // init wave info
-        waveMonsterNum = 5;
+        baseWaveMonsterNum = 5;
         timeBetweenWave = 15f;
 
-        // add the monsters that can be spawned in the beginning of the game
-        addMonster("Monsters/Monster");
-        addMonster("Monsters/Gun Monster");
+        updateSpawnInfo();
     }
 
     // Update is called once per frame
@@ -34,6 +35,10 @@ public class MonsterSpawner : MonoBehaviour
         if (timer >= timeBetweenWave || (Input.GetKeyDown(KeyCode.Space) && Time.timeScale > 0))    // if enough time between wave or user press space to start new wave
         {
             //Debug.Log("Spawn Monster Wave");
+
+            // update spawning probabilities and number of monsters spawned before spawning
+            updateSpawnInfo();
+
             for (int i = 0; i < waveMonsterNum; i++)
             {
                 spawn(chooseRandomMonster());
@@ -42,12 +47,24 @@ public class MonsterSpawner : MonoBehaviour
         }
     }
 
-    private void addMonster(string monsterPrefabPath)
+    // Update the dictionary of monsters that can be spawned and their probability of being spawned
+    private void updateSpawnInfo()
     {
-        GameObject monster = Resources.Load(monsterPrefabPath) as GameObject;
-        monsters.Add(monster, monster.transform.GetChild(0).GetComponent<Monster>().index);
-        monstersList.Add(monster);
-        indexSum += monsters[monster];
+        indexSum = 0;
+        monsters.Clear();
+
+        // number of monsters spawned based on pollusion: higher the pollusion, more monster will be spawned
+        PollusionManager pM = GameObject.Find("Pollusion Manager").GetComponent<PollusionManager>();
+        waveMonsterNum = baseWaveMonsterNum + (int)(pM.pollusion / pollusionPerAdditionalMonster);
+
+        // add the monsters that can be spawned in the beginning of the game
+        for (int i = 0; i < monstersList.Count; ++i)
+        {
+            monsters.Add(monstersList[i], monstersList[i].transform.GetChild(0).GetComponent<Monster>().getIndex());
+            indexSum += monsters[monstersList[i]];
+            //Debug.Log("Monster: " + monstersList[i].name + ", Index: " + monsters[monstersList[i]]);
+        }
+        //Debug.Log(indexSum);
     }
 
     // randomly choose a monster (to spawn) from the dictionary of all possible monster options at current stage

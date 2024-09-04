@@ -7,7 +7,7 @@ public class Fireball : Skill
 
     [SerializeField] private float radius;
     [SerializeField] private float knockBack;    // how much does it knock back monsters
-    [SerializeField] private float damage;
+    [SerializeField] private float damageMult;    // damage = damageMult * player damage
 
     [SerializeField] private ExplosionEffect explosion;
 
@@ -43,12 +43,12 @@ public class Fireball : Skill
             if (collider.tag == "Monster")
             {
                 Monster monster = collider.GetComponent<Monster>();
-                monster.monsterGetHit(((Vector2)monster.transform.position - Game.mousePos).normalized, knockBack, damage);
+                monster.monsterGetHit(((Vector2)monster.transform.position - Game.mousePos).normalized, knockBack, player.baseDamage*damageMult);
             }
             else if (collider.tag == "Tree")
             {
                 Tree tree = collider.GetComponent<Tree>();
-                tree.treeLoseHealth(damage, true);
+                tree.treeLoseHealth(player.baseDamage*damageMult, true);
             }
         }
 

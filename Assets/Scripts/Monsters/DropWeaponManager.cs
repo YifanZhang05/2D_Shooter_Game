@@ -21,6 +21,7 @@ public class DropWeaponManager : MonoBehaviour
             if (randInt <= 0)
             {
                 Instantiate(weaponDropInfo[i].weaponDropItem, transform.position, transform.rotation);
+                return;
             }
         }
     }
